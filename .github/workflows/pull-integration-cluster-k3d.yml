@@ -21,12 +21,14 @@ jobs:
           sudo snap remove chromium 
           sudo rm /usr/bin/chromium
       - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
+        run: |
+          wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_127.0.6533.119-1_amd64.deb 
+          apt install -y /tmp/chrome.deb
         id: setup-chrome
-        with:
-          chrome-version: 127.0.6533.0
-          install-dependencies: true
-          install-chromedriver: true
+        # with:
+        #   chrome-version: 127.0.6533.0
+        #   install-dependencies: true
+        #   install-chromedriver: true
       # - name: Chrome path
       #   run: |
       #     echo ${{ steps.setup-chrome.outputs.chrome-path }}
@@ -104,7 +106,7 @@ jobs:
           sleep 10
           
           cd tests/integration
-          npm ci && npm run "test:cluster" -- --browser ${{ steps.setup-chrome.outputs.chrome-path }}
+          npm ci && npm run "test:cluster" -- --browser chrome
       - name: Uploads artifacts
         uses: actions/upload-artifact@v4
         if: ${{ always() }}
