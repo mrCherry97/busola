@@ -28,7 +28,8 @@ jobs:
       - name: Chrome path
         run: |
           echo ${{ steps.setup-chrome.outputs.chrome-path }}
-          ln -s ${{ steps.setup-chrome.outputs.chrome-path }} /usr/bin/chromium
+          sudo ln -s ${{ steps.setup-chrome.outputs.chrome-path }} /usr/bin/chromium
+          whereis chromium
       # - name: Install Chrome
       #   shell: bash
       #   run: |
