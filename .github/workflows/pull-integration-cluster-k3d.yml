@@ -102,7 +102,7 @@ jobs:
           sleep 10
           
           cd tests/integration
-          npm ci && npm run "test:cluster" -- --browser ${{ steps.setup-chrome.outputs.chrome-path }}
+          npm ci && npm run "test:cluster"
       - name: Uploads artifacts
         uses: actions/upload-artifact@v4
         if: ${{ always() }}
