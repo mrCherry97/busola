@@ -28,9 +28,7 @@ jobs:
       - name: Chrome path
         run: |
           echo ${{ steps.setup-chrome.outputs.chrome-path }}
-          whereis chromium
-          ${{ steps.setup-chrome.outputs.chrome-path }} --version
-          chromium --version
+          ln -s ${{ steps.setup-chrome.outputs.chrome-path }} /usr/bin/chromium
       # - name: Install Chrome
       #   shell: bash
       #   run: |
