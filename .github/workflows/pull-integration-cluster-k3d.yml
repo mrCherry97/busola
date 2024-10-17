@@ -13,6 +13,8 @@ on:
 jobs:
   run-cluster-test:
     runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node-20.15.1-chrome-127.0.6533.72-1-ff-128.0-edge-126.0.2592.102-1
     steps:
       - name: Remove Chrome
         shell: bash
