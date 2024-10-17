@@ -16,17 +16,17 @@ jobs:
     container:
       image: cypress/browsers:node-20.15.1-chrome-127.0.6533.72-1-ff-128.0-edge-126.0.2592.102-1
     steps:
-      - name: Remove Chrome
-        shell: bash
-        run: |
-          sudo apt remove chromium -y
-          sudo snap remove chromium 
-          sudo rm /usr/bin/chromium
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
-        id: setup-chrome
-        with:
-          chrome-version: 127.0.6533.0
+      # - name: Remove Chrome
+      #   shell: bash
+      #   run: |
+      #     sudo apt remove chromium -y
+      #     sudo snap remove chromium 
+      #     sudo rm /usr/bin/chromium
+      # - name: Install Chrome
+      #   uses: browser-actions/setup-chrome@v1
+      #   id: setup-chrome
+      #   with:
+      #     chrome-version: 127.0.6533.0
       # - name: Chrome path
       #   run: |
       #     echo ${{ steps.setup-chrome.outputs.chrome-path }}
