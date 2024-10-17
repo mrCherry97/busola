@@ -89,7 +89,6 @@ jobs:
       - name: run_tests
         shell: bash
         run: |
-          chrome --version
           k3d kubeconfig get k3dCluster > tests/integration/fixtures/kubeconfig.yaml
           export CYPRESS_DOMAIN=http://localhost:3000
           serve -s build > busola.log &
