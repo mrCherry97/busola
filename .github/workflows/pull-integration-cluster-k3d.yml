@@ -89,10 +89,6 @@ jobs:
       - name: run_tests
         shell: bash
         run: |
-          echo ${{ steps.setup-chrome.outputs.chrome-path }}
-          sudo ln -s ${{ steps.setup-chrome.outputs.chrome-path }} /usr/bin/chromium
-          whereis chromium
-          chromium --version
           chrome --version
           k3d kubeconfig get k3dCluster > tests/integration/fixtures/kubeconfig.yaml
           export CYPRESS_DOMAIN=http://localhost:3000
