@@ -24,6 +24,12 @@ jobs:
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: 127
+      - name: Chrome path
+        run: |
+          echo ${{ steps.setup-chrome.outputs.chrome-path }}
+          whereis chromium
+          ${{ steps.setup-chrome.outputs.chrome-path }} --version
+          chromium --version
       # - name: Install Chrome
       #   shell: bash
       #   run: |
