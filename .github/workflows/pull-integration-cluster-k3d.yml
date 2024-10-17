@@ -14,6 +14,53 @@ jobs:
   run-cluster-test:
     runs-on: ubuntu-latest
     steps:
+      - name: Remove Chrome
+        shell: bash
+        run: |
+          sudo apt remove chromium -y
+          sudo snap remove chromium 
+          sudo rm /usr/bin/chromium
+      - name: Install Chrome
+        shell: bash
+        run: |
+          wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_127.0.6533.119-1_amd64.deb 
+          sudo apt install --allow-downgrades -y /tmp/chrome.deb 
+        id: setup-chrome
+        # with:
+        #   chrome-version: 127.0.6533.0
+        #   install-dependencies: true
+        #   install-chromedriver: true
+      # - name: Chrome path
+      #   run: |
+      #     echo ${{ steps.setup-chrome.outputs.chrome-path }}
+      #     sudo ln -s ${{ steps.setup-chrome.outputs.chrome-path }} /usr/bin/chromium
+      #     whereis chromium
+      # - name: Install Chrome
+      #   shell: bash
+      #   run: |
+      #     sudo apt remove chromium -y
+      #     sudo snap remove chromium 
+      #     sudo rm /usr/bin/chromium
+      #     wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_78.0.3904.87-1_amd64.deb \
+      #     && apt install -y /tmp/chrome.deb \
+      #     && rm /tmp/chrome.deb
+      #     whereis chromium
+      #     # sudo apt remove chromium -y
+      #     # sudo snap remove chromium 
+      #     # sudo rm /usr/bin/chromium
+      #     # whereis chromium
+      #     # sudo apt install flatpak
+      #     # sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+      #     # sudo flatpak install org.chromium.Chromium -y
+      #     # sudo flatpak update --commit=57738d65980bb60a37f4d433ed9574e62373a4f3cb6b3ff202b19e3629863fbb org.chromium.Chromium -y
+      #     # curl https://raw.githubusercontent.com/ronoaldo/tools/refs/heads/master/bin/flatpak-gen-shims > penis.sh
+      #     # chmod +x ./penis.sh
+      #     # ./penis.sh --add org.chromium.Chromium chromium
+      #     # export PATH=$PATH:~/.flatpak/bin
+      #     # ls -l ~/.flatpak/bin
+      #     # whereis chromium
+      #     # chromium --version
+      #     # echo "export PATH=$PATH:~/.flatpak/bin" >> ~/.bashrc
       - uses: gardenlinux/workflow-telemetry-action@v2
         with:
           comment_on_pr: false
@@ -55,7 +102,7 @@ jobs:
           sleep 10
           
           cd tests/integration
-          npm ci && npm run "test:cluster"
+          npm ci && npm run "test:cluster" -- --browser chrome
       - name: Uploads artifacts
         uses: actions/upload-artifact@v4
         if: ${{ always() }}
