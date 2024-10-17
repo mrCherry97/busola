@@ -24,7 +24,7 @@ jobs:
         uses: browser-actions/setup-chrome@v1
         id: setup-chrome
         with:
-          chrome-version: 128
+          chrome-version: 127.0.6533.0
       # - name: Chrome path
       #   run: |
       #     echo ${{ steps.setup-chrome.outputs.chrome-path }}
