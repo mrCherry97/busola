@@ -120,7 +120,6 @@ export function NavItem({ node, subItem = false }: NavItemProps) {
     selected: isSelected,
     href: node.dataSources || node.externalUrl ? getURL() : undefined,
     onClick: (e: Event) => {
-      e.preventDefault();
       e.stopPropagation();
       handleNavigation();
     },
