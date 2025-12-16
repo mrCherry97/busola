@@ -56,7 +56,7 @@ export default defineConfig(
         '@typescript-eslint/no-require-imports': 'warn',
         // Misc
         'no-unused-vars': [
-          'warn',
+          'error',
           {
             varsIgnorePattern: '^_',
             argsIgnorePattern: '^_',
