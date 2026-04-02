@@ -1,0 +1,36 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: ports-widget-services
+  namespace: ports-widget
+  labels:
+    app.kubernetes.io/name: ports-widget-services
+    busola.io/extension: resource
+    busola.io/extension-version: '0.5'
+data:
+  details: |-
+    body:
+      - name: Specification
+        widget: Panel
+        children:
+          - name: Type
+            source: spec.type
+          - name: Ports
+            source: spec.ports
+            widget: Ports
+            visibility: $exists(spec.ports)
+  list: |-
+    - name: Type
+      source: spec.type
+    - name: Ports
+      source: spec.ports
+      widget: Ports
+      separator: ', '
+  general: |-
+    resource:
+      kind: Service
+      version: v1
+    urlPath: ports-widget-services
+    scope: namespace
+    name: Ports Widget Services
+    category: Examples

@@ -1,4 +1,7 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/kyma-project/busola)](https://api.reuse.software/info/github.com/kyma-project/busola)
+[![Unit Tests](https://github.com/kyma-project/busola/actions/workflows/pull-unit-tests.yml/badge.svg)](https://github.com/kyma-project/busola/actions/workflows/pull-unit-tests.yml)
+[![Integration Tests (Namespace)](https://github.com/kyma-project/busola/actions/workflows/pull-integration-namespace-k3d.yml/badge.svg)](https://github.com/kyma-project/busola/actions/workflows/pull-integration-namespace-k3d.yml)
+[![Integration Tests (Cluster)](https://github.com/kyma-project/busola/actions/workflows/pull-integration-cluster-k3d.yml/badge.svg)](https://github.com/kyma-project/busola/actions/workflows/pull-integration-cluster-k3d.yml)
 
 # Busola
 
